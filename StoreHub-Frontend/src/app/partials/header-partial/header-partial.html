@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand px-4 shadow-sm">
+  <div class="container-fluid">
+
+    <div class="d-none d-md-flex align-items-center">
+      <span class="fw-medium me-2" style="color: #64748b;">Hoy es</span>
+      <span class="date-badge py-2 px-3 small fw-bold">
+        <mat-icon class="inline-icon me-1" style="color: #f37021;">calendar_today</mat-icon>
+        {{ fechaActual | date:'fullDate' }}
+      </span>
+    </div>
+
+    <ul class="navbar-nav ms-auto align-items-center">
+
+      <li class="nav-item me-3">
+        <button mat-icon-button matTooltip="Notificaciones" style="color: #64748b;">
+          <mat-icon matBadge="3" matBadgeColor="warn">notifications</mat-icon>
+        </button>
+      </li>
+
+      <div class="vr me-3" style="height: 30px;"></div>
+
+      <li class="nav-item d-flex align-items-center">
+        <div class="text-end me-3 d-none d-sm-block">
+          <div class="fw-bold small mb-0" style="color: #2d2d2d;">{{ nombreUsuario }}</div>
+          <div style="font-size: 0.7rem; color: #f37021; font-weight: 600; text-transform: uppercase;">
+            Administrador
+          </div>
+        </div>
+
+        <button mat-icon-button [matMenuTriggerFor]="userMenu" class="profile-btn rounded-circle overflow-hidden">
+          <img src="https://ui-avatars.com/api/?name=Alexs+IT&background=f37021&color=fff&bold=true"
+               class="rounded-circle w-100 h-100" alt="User">
+        </button>
+
+        <mat-menu #userMenu="matMenu" xPosition="before" class="mt-2">
+          <button mat-menu-item routerLink="/profile-screen">
+            <mat-icon color="primary">person</mat-icon> Mi Perfil
+          </button>
+          <button mat-menu-item>
+            <mat-icon color="primary">settings</mat-icon> Ajustes
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item routerLink="/login-screen">
+            <mat-icon color="warn">logout</mat-icon>
+            <span class="text-danger fw-bold">Cerrar Sesión</span>
+          </button>
+        </mat-menu>
+      </li>
+    </ul>
+
+  </div>
+</nav>

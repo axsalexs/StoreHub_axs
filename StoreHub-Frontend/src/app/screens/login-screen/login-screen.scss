@@ -1,0 +1,192 @@
+$primary-color: #f37021;
+$bg-dark: #121212;
+
+.login-wrapper {
+  background-color: $bg-dark;
+
+  /* =======================================
+     LADO DERECHO: FORMULARIO
+     ======================================= */
+  .form-side {
+    background-color: #1a1a1a;
+  }
+
+  .login-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  ::ng-deep {
+    .mat-mdc-form-field {
+      width: 100%;
+
+      // ESTO ASEGURA QUE EL TEXTO QUE ESCRIBE EL USUARIO SEA BLANCO
+      input.mat-mdc-input-element {
+        color: #ffffff !important;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+
+        &::placeholder { color: rgba(255, 255, 255, 0.3) !important; }
+      }
+
+      .mdc-text-field--outlined {
+        --mdc-outlined-text-field-container-color: rgba(255, 255, 255, 0.03);
+        --mdc-outlined-text-field-outline-color: rgba(255, 255, 255, 0.1);
+        --mdc-outlined-text-field-hover-outline-color: #f37021;
+        --mdc-outlined-text-field-focus-outline-color: #f37021;
+        --mdc-outlined-text-field-label-text-color: rgba(255, 255, 255, 0.5);
+        --mdc-outlined-text-field-focus-label-text-color: #f37021;
+      }
+
+      .mat-mdc-form-field-icon-suffix mat-icon { color: rgba(255, 255, 255, 0.3); }
+    }
+
+    .mat-focused .mat-mdc-form-field-icon-suffix mat-icon { color: $primary-color; }
+  }
+
+  .forgot-link {
+    color: $primary-color;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    &:hover { color: lighten($primary-color, 15%); text-decoration: underline; }
+  }
+
+  .border-top-dark { border-top: 1px solid rgba(255,255,255,0.05); }
+
+  .hub-btn {
+    height: 52px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 4px !important;
+    background-color: $primary-color !important;
+    color: white !important;
+    transition: all 0.3s ease;
+
+    &:disabled { opacity: 0.5; color: rgba(255,255,255,0.5) !important; }
+    &:not(:disabled):hover {
+      box-shadow: 0 5px 15px rgba(243, 112, 33, 0.4);
+      transform: translateY(-2px);
+    }
+  }
+
+  /* =======================================
+     LADO IZQUIERDO: ANIMACIÓN CREATIVA
+     ======================================= */
+  .creative-side {
+    position: relative;
+    background: radial-gradient(circle at center, #1e1e1e 0%, #0a0a0a 100%);
+    border-right: 1px solid rgba(255,255,255,0.05);
+
+    // Patrón de cuadrícula digital de fondo
+    .background-grid {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-size: 50px 50px;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      z-index: 1;
+    }
+
+    // Luz ambiental naranja en el centro
+    .glowing-orb {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(243, 112, 33, 0.08) 0%, transparent 60%);
+      border-radius: 50%;
+      z-index: 2;
+      animation: pulseOrb 6s alternate infinite ease-in-out;
+    }
+
+    .floating-ui-container {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+    }
+
+    // Tarjetas de Cristal
+    .glass-card {
+      position: absolute;
+      background: rgba(30, 30, 30, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(243, 112, 33, 0.4); // Acento naranja arriba
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    // Posición y animación individual de cada tarjeta
+    .card-1 {
+      width: 280px;
+      top: 30%;
+      left: 20%;
+      animation: floatSlow 7s infinite ease-in-out;
+    }
+
+    .card-2 {
+      width: 320px;
+      bottom: 25%;
+      right: 15%;
+      animation: floatMedium 9s infinite ease-in-out reverse;
+    }
+
+    .card-3 {
+      width: 100px;
+      height: 100px;
+      top: 15%;
+      right: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: floatFast 5s infinite ease-in-out;
+      border-radius: 50%;
+
+      .giant-icon { font-size: 3rem; width: 3rem; height: 3rem; }
+    }
+
+    // Elementos Skeleton (simulan la UI interna de las tarjetas)
+    .skeleton-line { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; }
+    .skeleton-box { height: 30px; flex: 1; background: rgba(243, 112, 33, 0.15); border-radius: 4px; }
+
+    // Gráfico de líneas falso
+    .skeleton-chart {
+      height: 100px;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+      border-left: 2px solid rgba(255,255,255,0.1);
+      position: relative;
+      &::after {
+        content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(45deg, transparent 30%, rgba(243,112,33,0.3) 100%);
+        clip-path: polygon(0 100%, 20% 80%, 40% 90%, 60% 40%, 80% 60%, 100% 20%, 100% 100%);
+      }
+    }
+
+    .brand-slogan {
+      position: absolute;
+      bottom: 10%;
+      left: 10%;
+      z-index: 4;
+    }
+  }
+
+  /* KEYFRAMES DE ANIMACIÓN */
+  @keyframes pulseOrb {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    100% { transform: scale(1.2); opacity: 1; }
+  }
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+  }
+  @keyframes floatMedium {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-15px) translateX(15px); }
+  }
+  @keyframes floatFast {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}

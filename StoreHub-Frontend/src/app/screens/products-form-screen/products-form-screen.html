@@ -1,0 +1,77 @@
+<div class="d-flex align-items-center mb-4">
+        <button mat-icon-button routerLink="/products-list-screen" class="me-2">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h2 class="fw-bold mb-0">Añadir Producto</h2>
+      </div>
+
+<div class="card border-0 shadow-sm p-4 rounded-4">
+  <form [formGroup]="productoForm" (ngSubmit)="guardarProducto()">
+
+    <div class="row g-3">
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Nombre del Producto</mat-label>
+          <input matInput
+                 formControlName="nombre"
+
+                 (input)="validarNombre($event)">
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Categoría</mat-label>
+          <mat-select formControlName="categoria">
+            @if (categorias && categorias.length > 0) {
+              @for (cat of categorias; track cat.id) {
+                <mat-option [value]="cat.id">{{ cat.nombre }}</mat-option>
+              }
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field appearance="outline" class="w-100 text-center-input no-prefix">
+          <mat-label>Precio Venta</mat-label>
+          <input matInput
+                type="text"
+                formControlName="precio"
+                placeholder="000.00"
+                (input)="formatearPrecio($event)">
+          <!--<mat-hint>Formato: 000.00</mat-hint>-->
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field appearance="outline" class="w-100 text-center-input">
+          <mat-label>Stock Inicial</mat-label>
+          <input matInput
+                type="text"
+                formControlName="stock"
+                placeholder="0"
+                (input)="validarStock($event)"> </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Descripción (Opcional)</mat-label>
+          <textarea matInput
+                    formControlName="descripcion"
+                    rows="3"
+                    maxlength="100"></textarea>
+          <mat-hint align="end">{{productoForm.get('descripcion')?.value?.length || 0}}/100</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="d-flex gap-3 justify-content-end border-top pt-4 mt-3">
+      <button mat-button type="button" (click)="cancelar()">CANCELAR</button>
+      <button mat-flat-button color="primary" type="submit" [disabled]="productoForm.invalid">
+        <mat-icon class="me-2">save</mat-icon> GUARDAR PRODUCTO
+      </button>
+    </div>
+
+  </form>
+</div>

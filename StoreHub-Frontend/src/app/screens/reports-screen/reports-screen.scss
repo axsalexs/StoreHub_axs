@@ -1,0 +1,62 @@
+$primary-color: #f37021;
+$dark-bg: #2d2d2d;
+$light-bg: #f4f7f6;
+$border-color: #e0e0e0;
+
+.container-fluid {
+  background-color: $light-bg;
+  min-height: 100vh;
+}
+
+h2 {
+  color: $dark-bg;
+  border-left: 4px solid $primary-color;
+  padding-left: 15px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+h5.fw-bold {
+  color: $dark-bg;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid $border-color;
+  padding-bottom: 10px;
+}
+
+// Estilo de tarjetas (Bordes rectos SaaS)
+.card {
+  border-radius: 4px !important;
+  border: 1px solid $border-color !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+
+  .card-icon {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 45px;
+    height: 45px;
+    width: 45px;
+    opacity: 0.15; // Un poco más sutil
+  }
+
+  // Tarjeta de KPI principal (Ventas Totales)
+  &.hub-primary-card {
+    background-color: $primary-color !important;
+    border-color: darken($primary-color, 10%) !important;
+    color: white;
+
+    small { color: rgba(255,255,255,0.8) !important; }
+    h3 { color: white !important; }
+    .card-icon { color: white; opacity: 0.3; }
+  }
+}
+
+// Colores de acento para íconos secundarios
+.text-hub-accent { color: $primary-color !important; }
+.text-hub-dark { color: $dark-bg !important; }

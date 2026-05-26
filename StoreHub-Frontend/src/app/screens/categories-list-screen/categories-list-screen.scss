@@ -1,0 +1,39 @@
+$primary-color: #f37021;
+$dark-bg: #2d2d2d;
+$light-bg: #f8f9fa;
+$border-color: #e0e0e0;
+
+h2 {
+  color: $dark-bg;
+  border-left: 4px solid $primary-color;
+  padding-left: 15px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.card {
+  border-radius: 0px !important; // Bordes rectos como en la imagen profesional
+  border: 1px solid $border-color !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+.table {
+  thead th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+  }
+}
+
+// Estilo del botón de guardado (Naranja)
+button[color="primary"] {
+  background-color: $primary-color !important;
+  border-radius: 4px;
+}
+
+// Sticky top ajuste
+.sticky-top {
+  z-index: 10;
+}

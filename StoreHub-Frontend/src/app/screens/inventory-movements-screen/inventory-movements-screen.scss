@@ -1,0 +1,70 @@
+$primary-color: #f37021;
+$dark-bg: #2d2d2d;
+$light-bg: #f4f7f6;
+$border-color: #e0e0e0;
+
+.container-fluid { background-color: $light-bg; min-height: 100vh; }
+
+h2 {
+  color: $dark-bg;
+  border-left: 4px solid $primary-color;
+  padding-left: 15px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.card {
+  border-radius: 4px !important;
+  border: 1px solid $border-color !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+  background-color: white;
+}
+
+.hub-form-button {
+  height: 52px !important;
+  margin-bottom: 2px;
+  background-color: $primary-color !important; 
+  padding: 1.2rem 2.5rem !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  transition: color 0.3s ease;
+
+  &:disabled {
+    color: rgba(255, 255, 255, 0.4) !important;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled) {
+    color: #ffffff !important;
+  }
+}
+
+.row.d-flex.align-items-end {
+  margin-bottom: 5px;
+  .col-md-2 { display: flex; align-items: flex-end; }
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper { display: none !important; }
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+.bg-success-subtle { background-color: #dcfce7; color: #15803d !important; }
+.bg-danger-subtle { background-color: #fee2e2; color: #b91c1c !important; }
+.bg-warning-subtle { background-color: #fef9c3; color: #a16207 !important; }
+
+.table {
+  thead th {
+    background-color: #f8fafc;
+    color: #64748b;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid $border-color;
+  }
+}

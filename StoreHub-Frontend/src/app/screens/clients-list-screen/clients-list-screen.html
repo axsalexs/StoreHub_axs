@@ -1,0 +1,40 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4 align-items-center">
+    <div class="col-md-6">
+      <h2 class="fw-bold">Directorio de Clientes</h2>
+      <p class="text-muted">Gestiona la base de datos de tus compradores</p>
+    </div>
+    <div class="col-md-6 text-md-end">
+      <button mat-flat-button color="primary" class="py-4 px-4 shadow" routerLink="/clients-form-screen">
+        <mat-icon class="me-2">person_add</mat-icon> NUEVO CLIENTE
+      </button>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="bg-light">
+        <tr>
+          <th class="ps-4 py-3 text-secondary small fw-bold">CLIENTE</th>
+          <th class="py-3 text-secondary small fw-bold">TELÉFONO</th>
+          <th class="py-3 text-secondary small fw-bold">CORREO</th>
+          <th class="py-3 text-secondary small fw-bold text-end pe-4">ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ps-4">
+            <div class="fw-bold">Juan Pérez</div>
+            <small class="text-muted text-uppercase" style="font-size: 0.6rem;">Cliente Frecuente</small>
+          </td>
+          <td>222 123 4567</td>
+          <td>juan.perez@email.com</td>
+          <td class="text-end pe-4">
+            <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

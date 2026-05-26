@@ -1,0 +1,77 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold">Categorías</h2>
+      <p class="text-muted">Listado de clasificación de productos</p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+
+    @if (rolUsuario === 'admin') {
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-4 sticky-top" style="top: 90px;">
+          <h5 class="fw-bold mb-3">Nueva Categoría</h5>
+          <form [formGroup]="categoryForm" (ngSubmit)="agregarCategoria()">
+
+            <mat-form-field appearance="outline" class="w-100 mb-2">
+              <mat-label>Nombre de Categoría</mat-label>
+              <input matInput
+                     formControlName="nombre"
+                     (input)="validarNombre($event)">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100 mb-3">
+              <mat-label>Descripción breve</mat-label>
+              <textarea matInput
+                        formControlName="descripcion"
+                        rows="2"
+                        maxlength="100"
+                        placeholder="¿Qué incluye esta categoría?"></textarea>
+              <mat-hint align="end">{{categoryForm.get('descripcion')?.value?.length || 0}}/100</mat-hint>
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" class="w-100 py-4" [disabled]="categoryForm.invalid">
+              <mat-icon class="me-2">save</mat-icon> GUARDAR CATEGORÍA
+            </button>
+          </form>
+        </div>
+      </div>
+    }
+
+    <div [ngClass]="rolUsuario === 'admin' ? 'col-md-8' : 'col-md-12'">
+      <div class="card border-0 shadow-sm rounded-0 overflow-hidden">
+        <table class="table align-middle mb-0">
+          <thead class="bg-light">
+            <tr>
+              <th class="ps-4 py-3">ID</th>
+              <th class="py-3">CATEGORÍA</th>
+              <th class="py-3">DESCRIPCIÓN</th>
+              @if (rolUsuario === 'admin') {
+                <th class="py-3 text-end pe-4">ACCIONES</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            @for (cat of categories; track cat.id) {
+              <tr>
+                <td class="ps-4">#{{ cat.id }}</td>
+                <td class="fw-bold" style="color: #f37021;">{{ cat.nombre }}</td>
+                <td>{{ cat.descripcion }}</td>
+
+                @if (rolUsuario === 'admin') {
+                  <td class="text-end pe-4">
+                    <button mat-icon-button color="warn" (click)="eliminarCategoria(cat.id)">
+                      <mat-icon>delete_outline</mat-icon>
+                    </button>
+                  </td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

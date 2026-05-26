@@ -1,0 +1,15 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidebar-wrapper {
+  width: 260px;
+  border-right: 1px solid #e0e0e0;
+  background-color: #1e293b; // Color oscuro profesional
+}
+
+.main-content {
+  padding: 20px;
+  background-color: #f8fafc;
+  min-height: calc(100vh - 120px); // Ajuste para header y footer
+}

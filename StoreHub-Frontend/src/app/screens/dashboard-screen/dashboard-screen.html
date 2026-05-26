@@ -1,0 +1,62 @@
+<div class="container-fluid py-4 bg-light-hub">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold text-dark-hub">Panel de Control</h2>
+      <p class="text-muted">Bienvenido de nuevo a StoreHub Backoffice</p>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    @for (item of stats; track item.label) {
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-3 hub-card">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="small fw-bold text-muted text-uppercase">{{ item.label }}</span>
+            <mat-icon [style.color]="item.color">{{ item.icon }}</mat-icon>
+          </div>
+          <h3 class="fw-bold mb-0">{{ item.value }}</h3>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm p-4 hub-card h-100">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h5 class="fw-bold mb-0">Rendimiento de Ventas</h5>
+          <div class="btn-group">
+            <button mat-button class="btn-sm active-tab">Hoy</button>
+            <button mat-button class="btn-sm">Semana</button>
+          </div>
+        </div>
+        <canvas #salesLineChart></canvas>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm p-4 hub-card h-100">
+        <h5 class="fw-bold mb-3">Alertas de Inventario</h5>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item px-0 py-3 border-0 d-flex align-items-center">
+            <div class="alert-indicator bg-danger me-3"></div>
+            <div>
+              <p class="mb-0 fw-bold small">Coca Cola 600ml</p>
+              <small class="text-muted">Quedan 2 unidades</small>
+            </div>
+          </div>
+          <div class="list-group-item px-0 py-3 border-0 d-flex align-items-center">
+            <div class="alert-indicator bg-warning me-3"></div>
+            <div>
+              <p class="mb-0 fw-bold small">Sabritas Sal</p>
+              <small class="text-muted">Quedan 8 unidades</small>
+            </div>
+          </div>
+        </div>
+        <button mat-flat-button color="primary" class="w-100 mt-auto" routerLink="/inventory-movements-screen">
+          GESTIONAR STOCK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

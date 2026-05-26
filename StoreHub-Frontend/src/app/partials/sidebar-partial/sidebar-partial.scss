@@ -1,0 +1,101 @@
+$primary-color: #f37021;
+$sidebar-bg: #121212; // Gris oscuro profundo, hace juego con el login
+$text-muted: #64748b;
+$text-light: #cbd5e1;
+
+/* Contenedor principal */
+.sidebar-container {
+  background-color: $sidebar-bg;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0 !important; 
+}
+
+/* ETIQUETAS DE SECCIÓN (Principal, Gestión) */
+.menu-label {
+  color: $text-muted !important;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding-left: 15px;
+  margin-top: 1.5rem;
+  font-weight: 700;
+}
+
+/* ITEMS DE NAVEGACIÓN */
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: $text-light;
+  text-decoration: none;
+  border-radius: 0 !important;
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+  border-left: 3px solid transparent;
+
+  mat-icon {
+    margin-right: 12px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: white;
+
+    mat-icon {
+      color: white;
+    }
+  }
+}
+
+/* LINK ACTIVO */
+.active-link {
+  background-color: rgba(243, 112, 33, 0.1) !important;
+  color: $primary-color !important;
+  font-weight: 600;
+  border-left: 3px solid $primary-color !important;
+  border-radius: 0 !important;
+
+  mat-icon {
+    color: $primary-color !important;
+  }
+}
+
+/* LINK ACTIVO  */
+.active-link {
+  background-color: rgba(243, 112, 33, 0.1) !important;
+  color: $primary-color !important;
+  font-weight: 600;
+  border-left: 3px solid $primary-color !important;
+  border-radius: 0 4px 4px 0;
+
+  mat-icon {
+    color: $primary-color !important;
+  }
+}
+
+/* FOOTER / CERRAR SESIÓN */
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  button {
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+
+    mat-icon { color: rgba(255, 255, 255, 0.4); }
+
+    &:hover {
+      color: #ff6b6b !important;
+      background-color: rgba(255, 107, 107, 0.1);
+      mat-icon { color: #ff6b6b; }
+    }
+  }
+}

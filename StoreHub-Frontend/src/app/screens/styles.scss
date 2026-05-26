@@ -1,0 +1,16 @@
+// Paleta StoreHub inspirada en la imagen
+$primary-color: #f37021; // Naranja principal
+$dark-bg: #2d2d2d;       // Gris oscuro de los menús
+$light-bg: #f8f9fa;      // Fondo gris muy claro
+$border-color: #e0e0e0;
+
+:root {
+  --storehub-orange: #f37021;
+  --storehub-dark: #2d2d2d;
+}
+
+// Sobreescribir botones de Angular Material para que sean Naranjas
+.mat-flat-button.mat-primary {
+  background-color: $primary-color !important;
+  border-radius: 4px !important; 
+}
