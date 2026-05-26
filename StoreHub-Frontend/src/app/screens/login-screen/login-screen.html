@@ -1,0 +1,96 @@
+<div class="container-fluid p-0 login-wrapper">
+  <div class="row g-0 min-vh-100">
+
+    <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center creative-side overflow-hidden">
+
+      <div class="background-grid"></div>
+      <div class="glowing-orb"></div>
+
+      <div class="floating-ui-container">
+
+        <div class="glass-card card-1 shadow-lg">
+          <div class="d-flex align-items-center mb-3">
+            <mat-icon class="text-primary me-2">insights</mat-icon>
+            <div class="skeleton-line w-50 m-0"></div>
+          </div>
+          <div class="skeleton-chart"></div>
+        </div>
+
+        <div class="glass-card card-2 shadow-lg">
+          <div class="skeleton-line w-75 mb-2"></div>
+          <div class="skeleton-line w-50 mb-4"></div>
+          <div class="d-flex gap-2">
+            <div class="skeleton-box"></div>
+            <div class="skeleton-box"></div>
+            <div class="skeleton-box"></div>
+          </div>
+        </div>
+
+        <div class="glass-card card-3 shadow-lg">
+          <mat-icon class="text-primary giant-icon">admin_panel_settings</mat-icon>
+        </div>
+
+      </div>
+
+      <div class="brand-slogan">
+        <h2 class="fw-bold text-white mb-2">Potencia tu ecosistema</h2>
+        <p class="text-white" style="font-size: 1.1rem;">Conectando inventario, ventas y clientes en tiempo real.</p>
+      </div>
+
+    </div>
+
+    <div class="col-lg-6 d-flex align-items-center justify-content-center form-side px-3">
+      <div class="login-card w-100">
+
+        <div class="text-center mb-5">
+          <div class="brand-logo mb-2 d-flex justify-content-center align-items-center gap-2">
+            <mat-icon style="color: #f37021; font-size: 2.5rem; width: 2.5rem; height: 2.5rem;">hub</mat-icon>
+            <h2 class="fw-bold text-white m-0" style="font-size: 2rem;">STORE<span style="color: #f37021">HUB</span></h2>
+          </div>
+          <p class="small text-uppercase fw-bold mb-0" style="color: #64748b; letter-spacing: 2px;">Manager Access</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+          <mat-form-field appearance="outline" class="w-100 mb-2">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="ejemplo@storehubhq.com">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Requerido</mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('pattern')">Formato inválido</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mb-1">
+            <mat-label>Contraseña</mat-label>
+            <input matInput
+                   [type]="hidePassword ? 'password' : 'text'"
+                   formControlName="password"
+                   maxlength="16">
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Requiere Contraseña</mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Mínimo 8 caracteres</mat-error>
+          </mat-form-field>
+
+          <div class="text-start mb-4">
+            <a href="#" class="forgot-link small fw-bold">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button mat-flat-button class="w-100 hub-btn" type="submit" [disabled]="loginForm.invalid">
+            CONTINUAR
+          </button>
+        </form>
+
+        <div class="text-center mt-5 pt-3 border-top-dark">
+          <p class="small mb-0 text-white">
+            ¿No tienes una cuenta?
+            <a routerLink="/registro-screen" class="forgot-link ms-1 fw-bold">Regístrate</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

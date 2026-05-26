@@ -1,0 +1,99 @@
+<div class="container-fluid p-0 registro-wrapper">
+  <div class="row g-0 min-vh-100">
+
+    <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center creative-side overflow-hidden">
+
+      <div class="background-rings"></div>
+      <div class="glowing-orb"></div>
+
+      <div class="floating-ui-container">
+
+        <div class="glass-card central-node shadow-lg d-flex align-items-center justify-content-center">
+          <mat-icon class="giant-icon text-primary">storefront</mat-icon>
+        </div>
+
+        <div class="glass-badge node-1 shadow-lg">
+          <mat-icon>inventory_2</mat-icon>
+        </div>
+        <div class="glass-badge node-2 shadow-lg">
+          <mat-icon>group</mat-icon>
+        </div>
+        <div class="glass-badge node-3 shadow-lg">
+          <mat-icon>point_of_sale</mat-icon>
+        </div>
+
+      </div>
+
+      <div class="brand-slogan text-center w-100 px-5">
+        <h2 class="fw-bold text-white mb-2">Construye tu imperio</h2>
+        <p class="text-white opacity-75" style="font-size: 1.1rem;">Crea tu cuenta y transforma la gestión de tu negocio hoy mismo.</p>
+      </div>
+
+    </div>
+
+    <div class="col-lg-6 d-flex align-items-center justify-content-center form-side px-3 py-5">
+      <div class="registro-card w-100">
+
+        <div class="text-center mb-5">
+          <div class="brand-logo mb-2 d-flex justify-content-center align-items-center gap-2">
+            <mat-icon style="color: #f37021; font-size: 2.5rem; width: 2.5rem; height: 2.5rem;">hub</mat-icon>
+            <h2 class="fw-bold text-white m-0" style="font-size: 2rem;">STORE<span style="color: #f37021">HUB</span></h2>
+          </div>
+          <p class="small text-uppercase fw-bold mb-0" style="color: #64748b; letter-spacing: 2px;">New Account</p>
+        </div>
+
+        <form [formGroup]="registroForm" (ngSubmit)="onRegister()">
+
+          <mat-form-field appearance="outline" class="w-100 mb-2">
+            <mat-label>Nombre del usuario</mat-label>
+            <input matInput formControlName="nombre" maxlength="50">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-hint align="end">{{registroForm.get('nombre')?.value?.length || 0}}/50</mat-hint>
+            <mat-error *ngIf="registroForm.get('nombre')?.hasError('required')">El nombre no puede quedar vacío</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mb-2">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="correo@ejemplo.com">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="registroForm.get('email')?.invalid">Correo inválido (requiere @ y .)</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mb-2 custom-select">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="rol">
+              @for (rol of roles; track rol.value) {
+                <mat-option [value]="rol.value">{{rol.viewValue}}</mat-option>
+              }
+            </mat-select>
+            <mat-icon matSuffix>badge</mat-icon>
+            <mat-error *ngIf="registroForm.get('rol')?.hasError('required')">Selecciona un rol</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mb-4">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" maxlength="16">
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-hint align="end">{{registroForm.get('password')?.value?.length || 0}}/16</mat-hint>
+            <mat-error *ngIf="registroForm.get('password')?.hasError('minlength')">Mínimo 8 caracteres</mat-error>
+          </mat-form-field>
+
+          <button mat-flat-button class="w-100 hub-btn" type="submit" [disabled]="registroForm.invalid">
+            CREAR CUENTA
+          </button>
+        </form>
+
+        <div class="text-center mt-5 pt-3 border-top-dark">
+          <p class="small mb-0 text-white">
+            ¿Ya tienes cuenta?
+            <a routerLink="/login-screen" class="forgot-link ms-1 fw-bold">Inicia Sesión</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

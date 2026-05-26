@@ -1,0 +1,48 @@
+$primary-color: #f37021;
+$dark-bg: #2d2d2d;
+$light-bg: #f4f7f6;
+$border-color: #e0e0e0;
+
+.bg-light-hub {
+  background-color: $light-bg;
+  min-height: 100vh;
+}
+
+.text-dark-hub {
+  color: $dark-bg;
+}
+
+h2 {
+  border-left: 4px solid $primary-color;
+  padding-left: 15px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.hub-card {
+  border-radius: 4px !important; // Bordes rectos profesionales
+  border: 1px solid $border-color !important;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+  }
+}
+
+.active-tab {
+  color: $primary-color !important;
+  font-weight: bold;
+  border-bottom: 2px solid $primary-color !important;
+  border-radius: 0;
+}
+
+.alert-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+button[color="primary"] {
+  background-color: $primary-color !important;
+  border-radius: 4px;
+}

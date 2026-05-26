@@ -1,0 +1,94 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold">Movimientos de Inventario</h2>
+      <p class="text-muted small">Registra entradas, salidas y ajustes manuales de stock en StoreHub</p>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm p-4 mb-4">
+    <h5 class="fw-bold mb-4" style="color: #2d2d2d; font-size: 0.9rem; text-transform: uppercase;">Nuevo Movimiento</h5>
+    <form [formGroup]="movementForm" (ngSubmit)="registrarMovimiento()">
+      <div class="row g-3 d-flex align-items-end">
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Producto</mat-label>
+            <mat-select formControlName="productoId">
+              @for (p of productos; track p.id) {
+                <mat-option [value]="p.id">{{ p.nombre }} (Stock: {{p.stock}})</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="tipo">
+              @for (t of tiposMovimiento; track t) {
+                <mat-option [value]="t">{{ t }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="number" formControlName="cantidad">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Motivo / Observación</mat-label>
+            <input matInput formControlName="motivo" placeholder="Ej. Reabastecimiento">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-2">
+          <button mat-flat-button color="primary" class="w-100 hub-form-button shadow-sm" [disabled]="movementForm.invalid">
+            REGISTRAR
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="card border-0 shadow-sm overflow-hidden">
+    <div class="p-3 bg-light border-bottom fw-bold text-secondary small text-uppercase" style="letter-spacing: 1px;">
+      Historial Reciente
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr>
+            <th class="ps-4">Fecha</th>
+            <th>Producto</th>
+            <th>Tipo</th>
+            <th class="text-center">Cantidad</th>
+            <th>Motivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (m of historialMovimientos; track m.id) {
+            <tr>
+              <td class="ps-4 text-secondary small">{{ m.fecha | date:'short' }}</td>
+              <td class="fw-bold" style="color: #2d2d2d;">{{ m.producto }}</td>
+              <td>
+                <span class="badge" [ngClass]="{
+                  'bg-success-subtle text-success': m.tipo === 'Entrada',
+                  'bg-danger-subtle text-danger': m.tipo === 'Salida',
+                  'bg-warning-subtle text-warning': m.tipo === 'Ajuste'
+                }">{{ m.tipo }}</span>
+              </td>
+              <td class="text-center fw-bold">{{ m.cantidad }}</td>
+              <td class="text-muted small">{{ m.motivo }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
